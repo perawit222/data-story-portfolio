@@ -356,10 +356,10 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px 28px 18px;
-      height: calc(100vh - 116px);
-      min-height: 540px;
-      max-height: 700px;
+      padding: 20px 26px 16px;
+      height: calc(100vh - 108px);
+      min-height: 580px;
+      max-height: 740px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -369,8 +369,8 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 12px;
+      gap: 12px;
+      margin-bottom: 8px;
     }
 
     .sticky-kicker {
@@ -379,26 +379,20 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
       color: var(--terracotta);
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .sticky-title {
-      font-size: 16px;
+      font-size: 15.5px;
       font-weight: 700;
       color: var(--ink);
-      line-height: 1.35;
-    }
-
-    .sticky-subtitle {
-      font-size: 12.5px;
-      color: var(--muted);
-      margin-top: 2px;
+      line-height: 1.32;
     }
 
     .sticky-stage {
-      flex: 1;
+      flex: 1 1 78%;
+      min-height: 75%;
       position: relative;
-      min-height: 0;
       display: flex;
       flex-direction: column;
     }
@@ -563,9 +557,10 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
 
     .kpi-mini.accent strong { color: var(--terracotta); }
 
+    /* Asymmetric Bento Grid */
     .dash-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 60fr 40fr;
       gap: 20px;
     }
 
@@ -573,10 +568,79 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px 22px 16px;
+      padding: 22px 24px 16px;
       display: flex;
       flex-direction: column;
-      height: 390px;
+      height: 400px;
+    }
+
+    .dash-card.span-full {
+      grid-column: 1 / -1;
+      height: 360px;
+    }
+
+    .dash-card.dark-editorial {
+      grid-column: 1 / -1;
+      height: 430px;
+      background: #18181B;
+      border-color: #27272A;
+      color: #FFFFFF;
+    }
+
+    .dash-card.dark-editorial .dash-card-title {
+      color: #FFFFFF;
+      font-size: 15.5px;
+    }
+
+    .dash-card.dark-editorial .chart-source {
+      color: #A1A1AA;
+      border-top-color: #27272A;
+    }
+
+    .dash-card.dark-editorial .race-label {
+      color: #F4F4F5;
+      font-size: 12.5px;
+    }
+
+    .dash-card.dark-editorial .race-track {
+      background: #27272A;
+      height: 16px;
+    }
+
+    .dash-card.dark-editorial .race-val {
+      color: #E7E5E4;
+      font-size: 12px;
+    }
+
+    .dash-card.dark-editorial .media-btn {
+      background: #27272A;
+      border-color: #3F3F46;
+      color: #F4F4F5;
+    }
+
+    .dash-card.dark-editorial .media-btn:hover {
+      background: #3F3F46;
+    }
+
+    .dash-card.dark-editorial .media-btn.play {
+      background: #EA580C;
+      border-color: #EA580C;
+      color: #FFFFFF;
+    }
+
+    .dash-card.dark-editorial .race-month-pill {
+      background: rgba(234, 88, 12, 0.18);
+      border-color: rgba(251, 146, 60, 0.45);
+      color: #FDBA74;
+    }
+
+    .dash-card.dark-editorial .scrubber-label {
+      color: #A1A1AA;
+    }
+
+    .dash-card.dark-editorial .race-row {
+      grid-template-columns: 112px 1fr 76px;
+      height: 23px;
     }
 
     .dash-card-top {
@@ -793,7 +857,7 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
     </div>
     <nav class="tab-nav">
       <button class="tab-btn active" data-tab="tab-scrolly">เรื่องเล่าจากข้อมูล</button>
-      <button class="tab-btn" data-tab="tab-dashboard">Executive Dashboard &amp; Animation</button>
+      <button class="tab-btn" data-tab="tab-dashboard">แดชบอร์ดผู้บริหาร</button>
     </nav>
   </header>
 
@@ -885,7 +949,6 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
               <div>
                 <div class="sticky-kicker" id="sticky-kicker">01 · ภาพรวมตลาดปี 2568</div>
                 <div class="sticky-title" id="sticky-title">ยอดนักท่องเที่ยวต่างชาติพักแรมรายเดือนตลอดปี 2568 (รวม 488,510 คน)</div>
-                <div class="sticky-subtitle" id="sticky-subtitle">จุดสูงสุดในเดือนมกราคม (66,867 คน) และธันวาคม (61,704 คน)</div>
               </div>
             </div>
 
@@ -922,7 +985,7 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
     <!-- ================= TAB 2: EXECUTIVE DASHBOARD & ANIMATION ================= -->
     <section id="tab-dashboard" class="tab-panel">
       <div class="dash-header">
-        <h1>Executive Dashboard — นักท่องเที่ยวต่างชาติจังหวัดประจวบคีรีขันธ์ (หัวหิน–ปราณบุรี)</h1>
+        <h1>แดชบอร์ดวิเคราะห์นักท่องเที่ยวต่างชาติ — จังหวัดประจวบคีรีขันธ์ (หัวหิน–ปราณบุรี)</h1>
         <p>วิเคราะห์ยอดพักแรมรายเดือน ฤดูกาล ไตรมาส และสัญชาติ จากข้อมูลจริงปี 2568 (1,933 แถว)</p>
       </div>
 
@@ -976,18 +1039,18 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
           <div class="chart-source"><span>ที่มา: สำนักงานการท่องเที่ยวและกีฬาจังหวัดประจวบคีรีขันธ์ (data.go.th)</span></div>
         </div>
 
-        <!-- Chart 2: Lollipop Chart Top 10 -->
+        <!-- Chart 2: Lollipop Chart Top 10 (40%) -->
         <div class="dash-card">
           <div class="dash-card-top">
             <div class="dash-card-title" id="d2-title">3 สัญชาติแรก (บริติช จีน เยอรมัน) ครองส่วนแบ่งสูงสุดในกลุ่ม Top 10</div>
             <span class="dash-tag">Lollipop Top 10</span>
           </div>
           <div class="viz-slot"><svg id="d2-svg"></svg></div>
-          <div class="chart-source"><span>ที่มา: สำนักงานการท่องเที่ยวและกีฬาจังหวัดประจวบคีรีขันธ์ (data.go.th)</span></div>
+          <div class="chart-source"><span>ที่มา: สำนักงานการท่องเที่ยวและกีฬาจังหวัดประจวบคีรีขันธ์ (data.go.th)</span><span>คลิกชื่อสัญชาติเพื่อกรองข้อมูล</span></div>
         </div>
 
-        <!-- Chart 3: Interactive Streamgraph / Smooth Area Flow -->
-        <div class="dash-card">
+        <!-- Chart 3: Interactive Streamgraph / Smooth Area Flow (100% Full Width) -->
+        <div class="dash-card span-full">
           <div class="dash-card-top">
             <div class="dash-card-title" id="d3-title">ตลาดจีนและออสเตรเลียช่วยพยุงสัดส่วนยอดเข้าพักช่วงกลางปีได้อย่างชัดเจน</div>
             <span class="dash-tag">Smooth Area Flow</span>
@@ -997,8 +1060,8 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
           <div class="chart-source"><span>ที่มา: สำนักงานการท่องเที่ยวและกีฬาจังหวัดประจวบคีรีขันธ์ (data.go.th)</span><span>วางเมาส์เพื่อไฮไลต์แต่ละสัญชาติ</span></div>
         </div>
 
-        <!-- Chart 4: Bar Chart Race 18s with Timeline Scrubber -->
-        <div class="dash-card">
+        <!-- Chart 4: Bar Chart Race 18s with Timeline Scrubber (100% Dark Editorial Highlight) -->
+        <div class="dash-card dark-editorial">
           <div class="dash-card-top">
             <div class="dash-card-title">การเปลี่ยนแปลงอันดับ Top 10 สัญชาติสะสมตลอดปี 2568</div>
             <div class="race-controls">
@@ -1139,7 +1202,6 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
         const meta = STEP_META[step];
         document.getElementById('sticky-kicker').textContent = meta.kicker;
         document.getElementById('sticky-title').textContent = meta.title;
-        document.getElementById('sticky-subtitle').textContent = meta.sub;
         document.getElementById('sticky-step-num').textContent = `บทที่ ${step + 1} / 4`;
 
         document.getElementById('sim-controls').classList.toggle('visible', step === 3);
@@ -1150,8 +1212,8 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
 
         const svgEl = document.getElementById('scrolly-svg');
         const rect = svgEl.getBoundingClientRect();
-        const W = Math.max(480, rect.width || 620);
-        const H = Math.max(300, rect.height || 380);
+        const W = Math.max(500, rect.width || 660);
+        const H = Math.max(360, rect.height || 440);
         const svg = d3.select(svgEl);
         svg.selectAll('*').remove();
         svg.attr('viewBox', `0 0 ${W} ${H}`);
@@ -1264,50 +1326,46 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
             })
             .on('mouseleave', hideTip);
 
-          // Direct Annotations
+          // Direct Annotations (clean, 1-2 focal points, zero overlap)
           if (step === 0) {
             g.append('text')
-              .attr('x', x('ม.ค.') + 8).attr('y', y(66867) - 10)
+              .attr('x', x('ม.ค.') + 6).attr('y', y(66867) - 14)
               .attr('fill', TERRACOTTA).attr('font-size', 12).attr('font-weight', 700)
-              .text('สูงสุด ม.ค. 66,867 คน');
+              .text('สูงสุด ม.ค. 66,867');
 
             g.append('text')
-              .attr('x', x('ธ.ค.') - 8).attr('y', y(61704) - 10)
+              .attr('x', x('ธ.ค.') - 6).attr('y', y(61704) - 14)
               .attr('text-anchor', 'end')
               .attr('fill', TERRACOTTA).attr('font-size', 12).attr('font-weight', 700)
-              .text('ธ.ค. 61,704 คน');
+              .text('ธ.ค. 61,704');
           } else if (step === 1) {
-            // Curved arrow pointing directly to May trough (25,190)
+            // 1 crisp curved arrow pointing directly to May trough (25,190) in open whitespace above
             const mx = x('พ.ค.'), my = y(25190);
             g.append('path')
-              .attr('d', `M ${mx + 58} ${my - 68} Q ${mx + 18} ${my - 48} ${mx + 6} ${my - 9}`)
+              .attr('d', `M ${mx + 56} ${my - 86} Q ${mx + 14} ${my - 58} ${mx + 4} ${my - 10}`)
               .attr('fill', 'none').attr('stroke', TERRACOTTA).attr('stroke-width', 1.8)
               .attr('marker-end', 'url(#arrow-terracotta)');
 
             g.append('text')
-              .attr('x', mx + 64).attr('y', my - 72)
+              .attr('x', mx + 62).attr('y', my - 88)
               .attr('fill', TERRACOTTA).attr('font-size', 12).attr('font-weight', 700)
-              .text('ต่ำสุด พ.ค. 25,190 คน');
-            g.append('text')
-              .attr('x', mx + 64).attr('y', my - 56)
-              .attr('fill', MUTED).attr('font-size', 11)
-              .text('(-62.3% จาก ม.ค. 66,867 คน)');
+              .text('ต่ำสุด พ.ค. 25,190 (-62.3%)');
 
             // Inline sub-panel comparing British (-66.9%) & German (-75.9%) drop
-            const subY = ih + 34;
+            const subY = ih + 38;
             const dropData = [
-              { name: 'บริติช (ธ.ค. 6,478 → มิ.ย. 2,145)', pct: 66.9, color: TERRACOTTA },
-              { name: 'เยอรมัน (ธ.ค. 5,453 → มิ.ย. 1,313)', pct: 75.9, color: OCEAN }
+              { name: 'บริติช (ธ.ค. → มิ.ย.)', pct: 66.9, color: TERRACOTTA },
+              { name: 'เยอรมัน (ธ.ค. → มิ.ย.)', pct: 75.9, color: OCEAN }
             ];
             dropData.forEach((d, idx) => {
-              const bx = idx === 0 ? 0 : iw / 2 + 12;
-              const bw = iw / 2 - 12;
+              const bx = idx === 0 ? 0 : iw / 2 + 14;
+              const bw = iw / 2 - 14;
               g.append('text').attr('x', bx).attr('y', subY + 10)
                 .attr('font-size', 11.5).attr('font-weight', 600).attr('fill', INK).text(d.name);
               g.append('rect').attr('x', bx).attr('y', subY + 18)
-                .attr('width', bw).attr('height', 12).attr('rx', 4).attr('fill', '#F3F2EE');
+                .attr('width', bw).attr('height', 10).attr('rx', 4).attr('fill', '#F3F2EE');
               g.append('rect').attr('x', bx).attr('y', subY + 18)
-                .attr('width', 0).attr('height', 12).attr('rx', 4).attr('fill', d.color)
+                .attr('width', 0).attr('height', 10).attr('rx', 4).attr('fill', d.color)
                 .transition().duration(700).attr('width', bw * (d.pct / 100));
               g.append('text').attr('x', bx + bw).attr('y', subY + 10)
                 .attr('text-anchor', 'end').attr('font-size', 11.5).attr('font-weight', 700).attr('fill', d.color)
@@ -1381,24 +1439,20 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
           // Direct Annotation 1: China Jul-Aug surge (4,988 / 4,591)
           const cx = x('ก.ค.'), cy = y(4988);
           g.append('circle').attr('cx', cx).attr('cy', cy).attr('r', 5).attr('fill', TERRACOTTA).attr('stroke', '#FFF').attr('stroke-width', 2);
-          g.append('circle').attr('cx', x('ส.ค.')).attr('cy', y(4591)).attr('r', 4.5).attr('fill', TERRACOTTA).attr('stroke', '#FFF').attr('stroke-width', 2);
           g.append('path')
-            .attr('d', `M ${cx - 48} ${cy - 48} Q ${cx - 16} ${cy - 34} ${cx - 4} ${cy - 8}`)
+            .attr('d', `M ${cx - 38} ${cy - 44} Q ${cx - 12} ${cy - 30} ${cx - 4} ${cy - 8}`)
             .attr('fill', 'none').attr('stroke', TERRACOTTA).attr('stroke-width', 1.6)
             .attr('marker-end', 'url(#arrow-terracotta)');
-          g.append('text').attr('x', cx - 52).attr('y', cy - 52).attr('text-anchor', 'end')
+          g.append('text').attr('x', cx - 42).attr('y', cy - 46).attr('text-anchor', 'end')
             .attr('fill', TERRACOTTA).attr('font-size', 11.5).attr('font-weight', 700)
-            .text('จีนพุ่งแซงบริติช ก.ค.–ส.ค.');
-          g.append('text').attr('x', cx - 52).attr('y', cy - 37).attr('text-anchor', 'end')
-            .attr('fill', MUTED).attr('font-size', 10.5)
-            .text('(4,988 และ 4,591 คน)');
+            .text('จีนพุ่ง ก.ค.–ส.ค. (4,988 / 4,591)');
 
-          // Direct Annotation 2: Australia stability (1,798–2,519/mo)
-          const ax = x('พ.ค.'), ay = y(1811);
+          // Direct Annotation 2: Australia stability (placed cleanly below line in open space)
+          const ax = x('มิ.ย.'), ay = y(2083);
           g.append('circle').attr('cx', ax).attr('cy', ay).attr('r', 4.5).attr('fill', AMBER).attr('stroke', '#FFF').attr('stroke-width', 2);
-          g.append('text').attr('x', ax - 8).attr('y', ay + 24).attr('text-anchor', 'middle')
+          g.append('text').attr('x', ax).attr('y', ih - 12).attr('text-anchor', 'middle')
             .attr('fill', '#B45309').attr('font-size', 11).attr('font-weight', 700)
-            .text('ออสเตรเลียนิ่งเสถียรทั้งปี (1,798–2,519/เดือน)');
+            .text('ออสเตรเลียเสถียรตลอดปี (1,798–2,519/เดือน)');
 
           g.append('g').attr('transform', `translate(0,${ih})`)
             .call(d3.axisBottom(x).tickSize(0).tickPadding(10))
@@ -1671,33 +1725,55 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
         const y = d3.scaleBand().domain(top10.map(d => d[0])).range([0, ih]).padding(0.35);
         const x = d3.scaleLinear().domain([0, (d3.max(top10, d => d[1]) || 10) * 1.1]).range([0, iw]);
 
+        function selectNationalityFromLollipop(natName) {
+          natSelect.value = (natSelect.value === natName) ? 'ALL' : natName;
+          hideTip();
+          updateDashboard();
+        }
+
+        // Invisible clickable row hitbox for easy Cross-Highlight clicking
+        g.selectAll('rect.hit').data(top10).join('rect')
+          .attr('x', -m.left).attr('y', d => y(d[0]) - 2)
+          .attr('width', W).attr('height', y.bandwidth() + 4)
+          .attr('fill', d => (selNat !== 'ALL' && d[0] === selNat) ? 'rgba(194, 65, 12, 0.06)' : 'transparent')
+          .attr('rx', 6)
+          .style('cursor', 'pointer')
+          .on('click', (_, d) => selectNationalityFromLollipop(d[0]))
+          .on('mousemove', (e, d) => showTip(e, `<strong>${d[0]}</strong><br>จำนวน: <strong>${fmt(d[1])} คน</strong> (${(d[1]/grand*100).toFixed(1)}%)<br><span style="color:#A1A1AA">คลิกเพื่อกรองสัญชาตินี้</span>`))
+          .on('mouseleave', hideTip);
+
         g.selectAll('line.stem').data(top10).join('line')
           .attr('x1', 0).attr('x2', d => x(d[1]))
           .attr('y1', d => y(d[0]) + y.bandwidth() / 2)
           .attr('y2', d => y(d[0]) + y.bandwidth() / 2)
           .attr('stroke', (d, i) => (selNat !== 'ALL' ? (d[0] === selNat ? TERRACOTTA : STONE) : (i < 3 ? TERRACOTTA : STONE)))
-          .attr('stroke-width', 2.4);
+          .attr('stroke-width', 2.4)
+          .style('pointer-events', 'none');
 
         g.selectAll('circle.head').data(top10).join('circle')
           .attr('cx', d => x(d[1]))
           .attr('cy', d => y(d[0]) + y.bandwidth() / 2)
           .attr('r', (d, i) => (selNat !== 'ALL' ? (d[0] === selNat ? 6.5 : 4.5) : (i < 3 ? 6 : 4.5)))
           .attr('fill', (d, i) => (selNat !== 'ALL' ? (d[0] === selNat ? TERRACOTTA : STONE_MID) : (i < 3 ? TERRACOTTA : OCEAN)))
-          .style('cursor', 'pointer')
-          .on('mousemove', (e, d) => showTip(e, `<strong>${d[0]}</strong><br>จำนวน: <strong>${fmt(d[1])} คน</strong> (${(d[1]/grand*100).toFixed(1)}%)`))
-          .on('mouseleave', hideTip);
+          .style('pointer-events', 'none');
 
         g.selectAll('text.val').data(top10).join('text')
           .attr('x', d => x(d[1]) + 10)
           .attr('y', d => y(d[0]) + y.bandwidth() / 2 + 4)
-          .attr('font-size', 10.5).attr('font-weight', (d, i) => i < 3 ? 700 : 500)
-          .attr('fill', (d, i) => i < 3 ? TERRACOTTA : MUTED)
+          .attr('font-size', 10.5).attr('font-weight', (d, i) => (selNat === d[0] || (selNat === 'ALL' && i < 3)) ? 700 : 500)
+          .attr('fill', (d, i) => (selNat === d[0] || (selNat === 'ALL' && i < 3)) ? TERRACOTTA : MUTED)
+          .style('pointer-events', 'none')
           .text(d => fmt(d[1]));
 
         g.append('g')
           .call(d3.axisLeft(y).tickSize(0).tickPadding(8))
           .call(s => s.select('.domain').remove())
-          .selectAll('text').attr('fill', INK).attr('font-size', 11.5).attr('font-weight', 500);
+          .selectAll('text')
+          .attr('fill', d => (selNat === d ? TERRACOTTA : INK))
+          .attr('font-size', 11.5)
+          .attr('font-weight', d => (selNat === d ? 700 : 500))
+          .style('cursor', 'pointer')
+          .on('click', (_, d) => selectNationalityFromLollipop(d));
       }
 
       function renderStreamChart(sel, labels, indices, nats, data, selNat) {
@@ -1815,7 +1891,8 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
         const maxV = frame.items[0][1] || 1;
         raceRows.innerHTML = frame.items.map(([nat, val], rank) => {
           const pct = (val / maxV * 100).toFixed(1);
-          const color = rank < 3 ? TERRACOTTA : (rank < 6 ? OCEAN : STONE_MID);
+          // Dark Editorial palette: Terracotta (#EA580C), Warm Gold (#EAB308), Warm Cream (#E7E5E4)
+          const color = rank < 3 ? '#EA580C' : (rank < 6 ? '#EAB308' : '#E7E5E4');
           return `
             <div class="race-row">
               <div class="race-label">${rank + 1}. ${nat}</div>
