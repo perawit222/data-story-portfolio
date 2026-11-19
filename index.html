@@ -476,33 +476,38 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
     }
 
     .filter-bar {
-      background: var(--surface);
+      position: sticky;
+      top: 68px;
+      z-index: 45;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--border);
+      border-bottom: 1px solid var(--border-strong);
       border-radius: var(--radius);
-      padding: 16px 22px;
-      margin-bottom: 20px;
+      padding: 10px 18px;
+      margin-bottom: 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 12px;
     }
 
     .filter-group {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .filter-item {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
     }
 
     .filter-item label {
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
       color: var(--ink);
       white-space: nowrap;
@@ -510,14 +515,14 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
 
     .filter-select {
       font-family: inherit;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 500;
-      padding: 7px 12px;
+      padding: 6px 10px;
       border: 1px solid var(--border);
       border-radius: 8px;
       background: var(--bg);
       color: var(--ink);
-      min-width: 195px;
+      min-width: 175px;
       cursor: pointer;
     }
 
@@ -528,9 +533,9 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
       border: 1px solid var(--border);
       color: var(--ink);
       font-family: inherit;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 500;
-      padding: 7px 13px;
+      padding: 6px 11px;
       border-radius: 8px;
       cursor: pointer;
     }
@@ -539,18 +544,19 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
 
     .kpi-strip {
       display: flex;
-      gap: 24px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
     .kpi-mini span {
       display: block;
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--muted);
+      line-height: 1.2;
     }
 
     .kpi-mini strong {
-      font-size: 17px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--ink);
     }
@@ -1236,7 +1242,7 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
           .attr('orient', 'auto')
           .append('path').attr('d', 'M0,-5L10,0L0,5').attr('fill', OCEAN);
 
-        const margin = { top: 28, right: 32, bottom: step === 1 ? 92 : 36, left: 56 };
+        const margin = { top: 28, right: step === 2 ? 66 : 32, bottom: step === 1 ? 92 : 36, left: 56 };
         const iw = W - margin.left - margin.right;
         const ih = H - margin.top - margin.bottom;
         const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
@@ -1339,17 +1345,23 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
               .attr('fill', TERRACOTTA).attr('font-size', 12).attr('font-weight', 700)
               .text('ธ.ค. 61,704');
           } else if (step === 1) {
-            // 1 crisp curved arrow pointing directly to May trough (25,190) in open whitespace above
+            // Place text in open upper area of Low Season box (Y = 53,000, centered) and curve arrow down to May (25,190)
+            const x1 = x('พ.ค.') - 14;
+            const x2 = x('ก.ย.') + 14;
+            const midX = (x1 + x2) / 2;
             const mx = x('พ.ค.'), my = y(25190);
-            g.append('path')
-              .attr('d', `M ${mx + 56} ${my - 86} Q ${mx + 14} ${my - 58} ${mx + 4} ${my - 10}`)
-              .attr('fill', 'none').attr('stroke', TERRACOTTA).attr('stroke-width', 1.8)
-              .attr('marker-end', 'url(#arrow-terracotta)');
+            const labelY = y(53000);
 
             g.append('text')
-              .attr('x', mx + 62).attr('y', my - 88)
+              .attr('x', midX).attr('y', labelY)
+              .attr('text-anchor', 'middle')
               .attr('fill', TERRACOTTA).attr('font-size', 12).attr('font-weight', 700)
               .text('ต่ำสุด พ.ค. 25,190 (-62.3%)');
+
+            g.append('path')
+              .attr('d', `M ${midX - 24} ${labelY + 8} Q ${mx + 10} ${y(45000)} ${mx + 3} ${my - 10}`)
+              .attr('fill', 'none').attr('stroke', TERRACOTTA).attr('stroke-width', 1.8)
+              .attr('marker-end', 'url(#arrow-terracotta)');
 
             // Inline sub-panel comparing British (-66.9%) & German (-75.9%) drop
             const subY = ih + 38;
@@ -1436,21 +1448,22 @@ window.TOURISM_DATA = [{"year":"2568","month":"มกราคม","monthIdx":0,
               .text(s.nat);
           });
 
-          // Direct Annotation 1: China Jul-Aug surge (4,988 / 4,591)
+          // Direct Annotation 1: China Jul-Aug surge placed in clear open space above (Y = 7,100)
           const cx = x('ก.ค.'), cy = y(4988);
+          const annY = y(7100);
           g.append('circle').attr('cx', cx).attr('cy', cy).attr('r', 5).attr('fill', TERRACOTTA).attr('stroke', '#FFF').attr('stroke-width', 2);
           g.append('path')
-            .attr('d', `M ${cx - 38} ${cy - 44} Q ${cx - 12} ${cy - 30} ${cx - 4} ${cy - 8}`)
+            .attr('d', `M ${cx} ${annY + 8} Q ${cx - 8} ${y(6050)} ${cx - 1} ${cy - 9}`)
             .attr('fill', 'none').attr('stroke', TERRACOTTA).attr('stroke-width', 1.6)
             .attr('marker-end', 'url(#arrow-terracotta)');
-          g.append('text').attr('x', cx - 42).attr('y', cy - 46).attr('text-anchor', 'end')
+          g.append('text').attr('x', cx).attr('y', annY).attr('text-anchor', 'middle')
             .attr('fill', TERRACOTTA).attr('font-size', 11.5).attr('font-weight', 700)
             .text('จีนพุ่ง ก.ค.–ส.ค. (4,988 / 4,591)');
 
-          // Direct Annotation 2: Australia stability (placed cleanly below line in open space)
+          // Direct Annotation 2: Australia stability (placed cleanly at bottom open space below all lines)
           const ax = x('มิ.ย.'), ay = y(2083);
           g.append('circle').attr('cx', ax).attr('cy', ay).attr('r', 4.5).attr('fill', AMBER).attr('stroke', '#FFF').attr('stroke-width', 2);
-          g.append('text').attr('x', ax).attr('y', ih - 12).attr('text-anchor', 'middle')
+          g.append('text').attr('x', ax).attr('y', ih - 8).attr('text-anchor', 'middle')
             .attr('fill', '#B45309').attr('font-size', 11).attr('font-weight', 700)
             .text('ออสเตรเลียเสถียรตลอดปี (1,798–2,519/เดือน)');
 
